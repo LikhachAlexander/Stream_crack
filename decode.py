@@ -38,12 +38,10 @@ def get_data(data_file, n_samples, max_n, space_thres):
                     # decode key
                     key[i] = samples[k][i] ^ ord(' ')
 
-        # null index mask
-        index_mask = [i for i, k in enumerate(key) if k == 0]
-
+        # probable key values
         alphabet = ascii_lowercase + ascii_uppercase + "0123456789" + " .,;"
-        # making best guess on null keys
         probable_key = [[] for _i in range(len(key))]
+
         for i in range(len(key)):
             if key[i] != 0:
                 probable_key[i].append(key[i])
